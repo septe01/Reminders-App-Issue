@@ -28,7 +28,13 @@ struct HomeView: View {
             }.sheet(isPresented: $isPresented) {
                 NavigationStack {
                     AddNewListView(onSave: { (name, color) in
-                        //
+                        // save list to database
+                        do {
+                            try ReminderService.saveMyList(name, color)
+                        } catch {
+                            print(error)
+                        }
+
                     })
                 }
             }
@@ -40,5 +46,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environment(\.managedObjectContext, CoreDataProvider.shared.persistenContainer.viewContext)
     }
 }

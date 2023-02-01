@@ -9,12 +9,16 @@ import Foundation
 import CoreData
 
 class CoreDataProvider {
-    
+
     static let shared = CoreDataProvider()
     let persistenContainer: NSPersistentContainer
 
 
     private init() {
+        
+        // register transformers (ketika ada field menggunakan transformer)
+        ValueTransformer.setValueTransformer(UIColorTransformer(), forName: NSValueTransformerName("UIColorTransformer"))
+
         persistenContainer = NSPersistentContainer(name: "RemindersModel")
 
         persistenContainer.loadPersistentStores { description, error in
