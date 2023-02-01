@@ -11,6 +11,7 @@
 		B31E276F298A6A4600971778 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E276E298A6A4600971778 /* ContentView.swift */; };
 		B31E2771298A6A4700971778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B31E2770298A6A4700971778 /* Assets.xcassets */; };
 		B31E2774298A6A4700971778 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B31E2773298A6A4700971778 /* Preview Assets.xcassets */; };
+		B31E277C298A6BD300971778 /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E277B298A6BD300971778 /* CoreDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		B31E276E298A6A4600971778 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B31E2770298A6A4700971778 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B31E2773298A6A4700971778 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B31E277B298A6BD300971778 /* CoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		B31E276B298A6A4600971778 /* RemindersApp */ = {
 			isa = PBXGroup;
 			children = (
+				B31E277A298A6B9C00971778 /* Providers */,
 				B31E276C298A6A4600971778 /* RemindersAppApp.swift */,
 				B31E276E298A6A4600971778 /* ContentView.swift */,
 				B31E2770298A6A4700971778 /* Assets.xcassets */,
@@ -65,6 +68,14 @@
 				B31E2773298A6A4700971778 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B31E277A298A6B9C00971778 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				B31E277B298A6BD300971778 /* CoreDataProvider.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			files = (
 				B31E276F298A6A4600971778 /* ContentView.swift in Sources */,
 				B31E276D298A6A4600971778 /* RemindersAppApp.swift in Sources */,
+				B31E277C298A6BD300971778 /* CoreDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
