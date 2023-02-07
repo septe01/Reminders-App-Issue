@@ -19,6 +19,7 @@ class ReminderService {
         try viewContext.save()
     }
 
+    // service list
     static func saveMyList(_ name: String, _ color: UIColor) throws {
         let myList = MyList(context: viewContext)
 
@@ -26,5 +27,24 @@ class ReminderService {
         myList.color = color
 
         try save()
+    }
+
+    // service reminder
+    static func saveReminderToMyList(myList: MyList, reminderTitle: String) throws {
+        let reminder = Reminder(context: viewContext)
+
+        reminder.title = reminderTitle
+        myList.addToReminders(reminder)
+
+        try save()
+    }
+
+    // get reminder by list
+    static func getRemindersByList(myList: MyList) -> NSFetchRequest<Reminder> {
+        let request = Reminder.fetchRequest()
+        request.sortDescriptors = []
+
+        request.predicate = NSPredicate(format: "list = %@ AND isCompleted = false", myList)
+        return request
     }
 }
