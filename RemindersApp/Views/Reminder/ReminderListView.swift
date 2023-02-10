@@ -10,6 +10,18 @@ import SwiftUI
 struct ReminderListView: View {
 
     let reminders: FetchedResults<Reminder>
+    
+    private func  reminderCheckedChange(reminder: Reminder) {
+        var editConfig = ReminderEditConfig(reminder: reminder)
+        editConfig.isCompleted = reminder.isCompleted
+
+        do {
+           let _ = try ReminderService.updateReminder(reminder: reminder, editConfig: editConfig)
+        } catch {
+            print(error)
+        }
+
+    }
 
     var body: some View {
         List(reminders) { reminder in
@@ -18,7 +30,7 @@ struct ReminderListView: View {
                 case .onSelect(let reminder):
                     print("ON SELECTED")
                 case .onCheckedChange(let reminder):
-                    print("On Checked Change")
+                    reminderCheckedChange(reminder: reminder)
                 case .onInfo:
                     print("on Info.")
                 }
