@@ -13,6 +13,10 @@ struct ReminderDetailView: View {
     @Binding var reminder: Reminder
     @State var editConfig: ReminderEditConfig = ReminderEditConfig()
 
+    private var isFormValid: Bool {
+        !editConfig.title.isEmpty
+    }
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -39,7 +43,7 @@ struct ReminderDetailView: View {
                         })
 
                         if editConfig.hasTime {
-                            DatePicker("Select Time", selection: $editConfig.reminderDate ?? Date(), displayedComponents: .hourAndMinute)
+                            DatePicker("Select Time", selection: $editConfig.reminderTime ?? Date(), displayedComponents: .hourAndMinute)
                         }
 
                         Section {
@@ -52,6 +56,15 @@ struct ReminderDetailView: View {
                                     Text(reminder.list!.name)
                                 }
                             }
+                        }
+                    }
+                    .onChange(of: editConfig.hasDate) { hasDate in
+                        if hasDate {
+                            editConfig.reminderDate = Date() //set current date
+                        }
+                    }.onChange(of: editConfig.hasTime) { hasTime in
+                        if hasTime {
+                            editConfig.reminderTime = Date()
                         }
                     }
                 }
@@ -67,8 +80,15 @@ struct ReminderDetailView: View {
 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        print("done")
-                    }
+
+                            do {
+                                let _ = try  ReminderService.updateReminder(reminder: reminder, editConfig: editConfig)
+                            } catch  {
+                                print(error)
+                            }
+                        dismiss()
+                        //make sure form is valid
+                    }.disabled(!isFormValid)
                 }
 
 

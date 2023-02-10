@@ -49,6 +49,7 @@ class ReminderService {
     }
 
     static func updateReminder(reminder: Reminder, editConfig: ReminderEditConfig) throws -> Bool {
+        
         let reminderToUpdate = reminder
         reminderToUpdate.isCompleted = editConfig.isCompleted
         reminderToUpdate.title = editConfig.title
