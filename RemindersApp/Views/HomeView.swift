@@ -21,11 +21,30 @@ struct HomeView: View {
     @State private var searching: Bool = false
     @State private var isPresented: Bool = false
 
+    private var remiderStatsBuilder = ReminderStateBuilder()
+    @State private var reminderStatsValues = ReminderStateValues()
 
     var body: some View {
         NavigationStack {
             VStack {
                 ScrollView {
+
+                    HStack {
+                        ReminderStatsView(icon: "calendar", title: "Today", count: reminderStatsValues.todayCount)
+                        ReminderStatsView(icon: "tray.circle.fill", title: "All", count: reminderStatsValues.allCount)
+                    }
+
+                    HStack {
+                        ReminderStatsView(icon: "calendar.circle.fill", title: "Schaduled", count: reminderStatsValues.schaduleCount)
+                        ReminderStatsView(icon: "checkmark.circle.fill", title: "Completed", count: reminderStatsValues.completedCount)
+                    }
+
+
+                    Text("My List")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.largeTitle)
+                        .bold()
+                        .padding()
 
                     MyListView(myLists: myListResults)
 
@@ -52,6 +71,9 @@ struct HomeView: View {
                 ReminderListView(reminders: searchResults)
                     .opacity(searching ? 1.0 : 0.0)
             })
+            .onAppear {
+                reminderStatsValues = remiderStatsBuilder.build(myListResults: myListResults)
+            }
             .sheet(isPresented: $isPresented) {
                 NavigationStack {
                     AddNewListView(onSave: { (name, color) in
