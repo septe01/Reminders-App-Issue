@@ -21,6 +21,7 @@
 		B31E278F298AAD1900971778 /* UIColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E278E298AAD1900971778 /* UIColorTransformer.swift */; };
 		B327FF8D299866F300EDC55E /* ReminderStateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B327FF8C299866F300EDC55E /* ReminderStateBuilder.swift */; };
 		B327FF8F299883D100EDC55E /* ReminderStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B327FF8E299883D100EDC55E /* ReminderStatsView.swift */; };
+		B327FF922998F7FD00EDC55E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B327FF912998F7FD00EDC55E /* NotificationManager.swift */; };
 		B33C45A8299648E3006CD76E /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33C45A7299648E3006CD76E /* Delay.swift */; };
 		B34B94A2298BA1000031312B /* MyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34B94A1298BA1000031312B /* MyListView.swift */; };
 		B3569A3429937F70003E7202 /* ReminderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3569A3329937F70003E7202 /* ReminderDetailView.swift */; };
@@ -52,6 +53,7 @@
 		B31E278E298AAD1900971778 /* UIColorTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTransformer.swift; sourceTree = "<group>"; };
 		B327FF8C299866F300EDC55E /* ReminderStateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderStateBuilder.swift; sourceTree = "<group>"; };
 		B327FF8E299883D100EDC55E /* ReminderStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderStatsView.swift; sourceTree = "<group>"; };
+		B327FF912998F7FD00EDC55E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		B33C45A7299648E3006CD76E /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		B34B94A1298BA1000031312B /* MyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListView.swift; sourceTree = "<group>"; };
 		B3569A3329937F70003E7202 /* ReminderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderDetailView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		B31E276B298A6A4600971778 /* RemindersApp */ = {
 			isa = PBXGroup;
 			children = (
+				B327FF902998F7D900EDC55E /* Manager */,
 				B37932742992957D00700298 /* Extentions */,
 				B31E278D298AACF700971778 /* Transformers */,
 				B31E278A298AAAAD00971778 /* Services */,
@@ -168,6 +171,14 @@
 				B31E278E298AAD1900971778 /* UIColorTransformer.swift */,
 			);
 			path = Transformers;
+			sourceTree = "<group>";
+		};
+		B327FF902998F7D900EDC55E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B327FF912998F7FD00EDC55E /* NotificationManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		B3569A3529938010003E7202 /* EditConfig */ = {
@@ -284,6 +295,7 @@
 				B31E2782298A6F2000971778 /* MyList+CoreDataClasss.swift in Sources */,
 				B37932762992959B00700298 /* Date+Extentions.swift in Sources */,
 				B35BFA23298BA48100CB4075 /* PreviewData.swift in Sources */,
+				B327FF922998F7FD00EDC55E /* NotificationManager.swift in Sources */,
 				B31E278F298AAD1900971778 /* UIColorTransformer.swift in Sources */,
 				B379326E298DE8BA00700298 /* MyListDetailView.swift in Sources */,
 				B35BFA26298BBB0400CB4075 /* String+isEmpty.swift in Sources */,
