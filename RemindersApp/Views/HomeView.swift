@@ -13,23 +13,46 @@ struct HomeView: View {
     @FetchRequest(sortDescriptors: [])
     private var myListResults: FetchedResults<MyList>
 
+    //fetchrequest
+    @FetchRequest(sortDescriptors: [])
+    private var searchResults: FetchedResults<Reminder>
+
+    @State private var search: String = ""
+    @State private var searching: Bool = false
     @State private var isPresented: Bool = false
+
 
     var body: some View {
         NavigationStack {
             VStack {
-                MyListView(myLists: myListResults)
+                ScrollView {
 
-//                Spacer()
+                    MyListView(myLists: myListResults)
 
-                Button{
-                    isPresented = true
-                } label: {
-                    Text("Add List")
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .font(.headline)
+    //                Spacer()
+
+                    Button{
+                        isPresented = true
+                    } label: {
+                        Text("Add List")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .font(.headline)
+                    }
+                    
                 }
-            }.sheet(isPresented: $isPresented) {
+
+            }
+            .onChange(of: search, perform: { searchTerm in
+               searching = !searchTerm.isEmpty ? true : false
+
+                // call search service
+                searchResults.nsPredicate = ReminderService.getRemindersBySearch(search: search).predicate
+            })
+            .overlay(content: {
+                ReminderListView(reminders: searchResults)
+                    .opacity(searching ? 1.0 : 0.0)
+            })
+            .sheet(isPresented: $isPresented) {
                 NavigationStack {
                     AddNewListView(onSave: { (name, color) in
                         // save list to database
@@ -42,8 +65,12 @@ struct HomeView: View {
                     })
                 }
             }
+            .padding()
+            .navigationTitle("Reminders")
+
         }
-        .padding()
+        .searchable(text: $search)
+
     }
 }
 
