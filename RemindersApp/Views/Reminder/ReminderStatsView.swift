@@ -11,8 +11,8 @@ struct ReminderStatsView: View {
 
     let icon: String
     let title: String
-    let count: Int?
-    let iconColor: Color = .blue
+    var count: Int?
+    var iconColor: Color = .blue
 
     var body: some View {
         HStack {
